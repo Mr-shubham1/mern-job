@@ -8,6 +8,10 @@ import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import { USER_END_POINT } from "@/utils/constant";
 import { toast } from "sonner";
+import { useDispatch, useSelector } from "react-redux";
+import { setLoading } from "@/redux/authslice";
+import { Loader2 } from "lucide-react";
+
 
 const Signup = () => {
 
@@ -20,6 +24,8 @@ const Signup = () => {
         file:null
     });
     const navigate = useNavigate();
+    const {loading} = useSelector(store=>store.auth);
+    const dispatch = useDispatch();
     const onChangeEventHandler = (e)=>{
         setInput({...input,[e.target.name]:e.target.value});     // just spread karke over write kar raha hun  , [e.target.name]   ise bracket me likh ke js ko bata raha hu ki evaluate hone ke baad jo bhi yahan aayega use as a key (for an object of course) treat kae naa ki as a string 
     }
@@ -35,6 +41,7 @@ const Signup = () => {
     const onSubmitHandler = async (e)=>{
       try {
         e.preventDefault();
+        dispatch(setLoading(true));
         const formData = new FormData();
         formData.append("fullname",input.fullname);
         formData.append("email",input.email);
@@ -57,6 +64,8 @@ const Signup = () => {
       } catch (error) {
         console.log("catch error in onSubmitHandler :- " + error);
         toast.error(error.response.data.message);
+      } finally{
+        dispatch(setLoading(false));
       }
         
     }
@@ -120,7 +129,9 @@ const Signup = () => {
             </div>
             
           </div>
-          <Button type="submit" className="w-full my-2">Sign up</Button>
+          {
+            loading ? <Button className="w-full my-2"> <Loader2 className="mr-2 h-4 w-4 animate-spin" /> Please wait </Button> : <Button type="submit" className="w-full my-2">Sign up</Button>
+          }
           <span className="text-sm">already have an account ? <Link className="text-blue-600" to="/login" >login</Link></span>
         </form>
       </div>

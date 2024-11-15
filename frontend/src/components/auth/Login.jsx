@@ -8,6 +8,10 @@ import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import { USER_END_POINT } from "@/utils/constant";
 import { toast } from "sonner";
+import { useDispatch, useSelector } from "react-redux";
+import { setLoading } from "@/redux/authslice";
+import { Loader2 } from "lucide-react";
+// import loading from "../../redux/store"
 
 
 
@@ -22,9 +26,12 @@ const onChangeEventHandler = (e)=>{
 }
 // login karne par api call hoaga
 const navigate = useNavigate();
+const {loading} = useSelector(store=>store.auth);
+const dispatch = useDispatch();
 const onSubmitHandler = async (e)=>{
       try {
         e.preventDefault();
+        dispatch(setLoading(true));
         const res = await axios.post(`${USER_END_POINT}/login`,input,{
           headers:{"Content-Type":"application/json"},
           withCredentials:true
@@ -39,6 +46,8 @@ const onSubmitHandler = async (e)=>{
         console.log("catch error in onSubmitHandler" + error);
         toast.error(error.response.data.message);
         
+      } finally{
+        dispatch(setLoading(false));
       }
         
 }
@@ -94,7 +103,9 @@ const onSubmitHandler = async (e)=>{
               </div>
             </RadioGroup>            
           </div>
-          <Button type="submit" className="w-full my-2">Login</Button>
+          {
+            loading ? <Button className="w-full my-2"> <Loader2 className="mr-2 h-4 w-4 animate-spin" /> Please wait </Button> : <Button type="submit" className="w-full my-2">Login</Button>
+          }
           <span className="text-sm">Don't have an account ? <Link className="text-blue-600" to="/signup" >Sign up</Link></span>
         </form>
       </div>
