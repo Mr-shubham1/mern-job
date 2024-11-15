@@ -3,6 +3,7 @@ import Navbar from './shared/Navbar';
 import CardFilter from './CardFilter';
 import Job from './Job';
 
+
 const jobsArray = [1,2,3,4,5,6,7,8];
 const Jobs = () => {
   return (
@@ -22,6 +23,7 @@ const Jobs = () => {
           }
         </div>
       </div>
+      
      
     </div>
   )

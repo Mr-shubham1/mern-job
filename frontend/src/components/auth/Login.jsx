@@ -9,7 +9,7 @@ import axios from "axios";
 import { USER_END_POINT } from "@/utils/constant";
 import { toast } from "sonner";
 import { useDispatch, useSelector } from "react-redux";
-import { setLoading } from "@/redux/authslice";
+import { setLoading, setUser } from "@/redux/authslice";
 import { Loader2 } from "lucide-react";
 // import loading from "../../redux/store"
 
@@ -27,6 +27,7 @@ const onChangeEventHandler = (e)=>{
 // login karne par api call hoaga
 const navigate = useNavigate();
 const {loading} = useSelector(store=>store.auth);
+// const {user} = useSelector(store=>store.auth);
 const dispatch = useDispatch();
 const onSubmitHandler = async (e)=>{
       try {
@@ -37,6 +38,7 @@ const onSubmitHandler = async (e)=>{
           withCredentials:true
         })
         if(res.data.success){
+          dispatch(setUser(res.data.user))
           navigate("/");
           toast.success(res.data.message);
         }

@@ -1,12 +1,12 @@
 import React from "react";
 import { Button } from "./ui/button";
 import { Bookmark, Ghost } from "lucide-react";
-import { Avatar, AvatarFallback, AvatarImage } from "@radix-ui/react-avatar";
 import { Badge } from "./ui/badge";
+import { Avatar, AvatarImage } from "./ui/avatar";
 
 const Job = () => {
   return (
-    <div className="p-5 w-[240px] border border-gray-100 shadow-xl bg-white rounded-md">
+    <div className="p-2 w-[240px] border border-gray-100 shadow-xl bg-white rounded-md">
       <div className="flex items-center justify-between">
         <p className="text-sm text-gray-500">2 days ago</p>
         <Button variant="outline" classname="rounded-full" size="icon">
@@ -33,7 +33,7 @@ const Job = () => {
         <p className="text-sm text-gray-600">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Voluptates, possimus similique a assumenda accusamus culpa ullam minima repellat blanditiis ex!</p>
       </div>
       <div className="flex items-center gap-2 mt-4">
-        <Badge className={"text-blue-700  text-sm "} variant={Ghost} >12 Positions</Badge>
+        <Badge className={"text-blue-700  "} variant={Ghost} >12 Positions</Badge>
         <Badge className={"text-[#F83002] "} variant={Ghost} >Part Time</Badge>
         <Badge className={"text-[#7209b7] "} variant={Ghost} >24 LPA</Badge>
       </div>
