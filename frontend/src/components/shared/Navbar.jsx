@@ -60,7 +60,7 @@ const Navbar = () => {
                 <div className="flex flex-col items-start mt-2">
                   <div className="flex items-center">
                     <User2 />
-                    <Button variant="link">View profile</Button>
+                    <Button variant="link"> <Link to="/profile">View profile</Link></Button>
                   </div>
                   <div className="flex items-center">
                     <LogOut />

@@ -3,8 +3,11 @@ import { Button } from "./ui/button";
 import { Bookmark, Ghost } from "lucide-react";
 import { Badge } from "./ui/badge";
 import { Avatar, AvatarImage } from "./ui/avatar";
+import { useNavigate } from "react-router-dom";
 
+const jobid = "sdfghjhgfd";
 const Job = () => {
+  const navigate = useNavigate();
   return (
     <div className="p-2 w-[240px] border border-gray-100 shadow-xl bg-white rounded-md">
       <div className="flex items-center justify-between">
@@ -38,7 +41,7 @@ const Job = () => {
         <Badge className={"text-[#7209b7] "} variant={Ghost} >24 LPA</Badge>
       </div>
       <div className="flex items-center gap-4 mt-4">
-        <Button variant="outline">Details</Button>
+        <Button onClick={(e)=>navigate(`/description/${jobid}`)} variant="outline">Details </Button>
         <Button className="bg-[#7209b7]">Save for later</Button>
       </div>
     </div>
