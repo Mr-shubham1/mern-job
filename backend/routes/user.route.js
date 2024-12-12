@@ -7,7 +7,7 @@ const router = express.Router();
 
 router.route("/register").post(upload.single('file'),register);
 router.route("/login").post(login);
-router.route("/profile/update").post(isAuthenticated,updateprofile);   // wahi update kar payega jo authenticated ho
+router.route("/profile/update").post(isAuthenticated,upload.single('file'),updateprofile);   // wahi update kar payega jo authenticated ho
 router.route("/logout").get(logout);
 
 export default router;
