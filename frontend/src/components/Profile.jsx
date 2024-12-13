@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Navbar from "./shared/Navbar";
 import { Avatar, AvatarImage } from "./ui/avatar";
 import { Contact, Mail, Pen } from "lucide-react";
@@ -7,12 +7,29 @@ import { Badge } from "./ui/badge";
 import { Label } from "./ui/label";
 import AppliedJobTable from "./AppliedJobTable";
 import UpdateProfileDialog from "./UpdateProfileDialog";
+import { useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
 
 
-const skills = ["HTML","CSS","Javascript","ReactJS","ExpressJS","MongoDB"]
-const isResume = true;
+// const skills = ["HTML","CSS","Javascript","ReactJS","ExpressJS","MongoDB"]
+let isResume = false;
 const Profile = () => {
     const [open,setOpen] = useState(false);
+    const user = useSelector(store=>store.auth.user);
+    const navigate = useNavigate();
+
+    // Redirect to home if user is not authenticated
+    useEffect(() => {
+        if (!user) {
+            navigate("/"); // Redirect to home page
+        }
+    }, [user, navigate]);
+    if(user?.profile?.resume){
+      isResume = true;
+    }
+    // console.log(user?.profile?.profilephoto);
+    const skills = user?.profile?.skills[0]?.replace(/\s+/g," ").split(" ");
+    // console.log(skills.length);
   return (
     <div>
       <Navbar />
@@ -21,15 +38,14 @@ const Profile = () => {
           <div className="flex items-center gap-4">
             <Avatar className="h-24 w-24">
               <AvatarImage
-                src="https://www.shutterstock.com/image-vector/circle-line-simple-design-logo-600nw-2174926871.jpg"
+                src={user?.profile?.profilephoto || "https://cdn-icons-png.flaticon.com/512/9385/9385289.png"}
                 alt="@shadcn"
               />
             </Avatar>
             <div>
-              <h1 className="font-medium text-xl">Full name</h1>
+              <h1 className="font-medium text-xl">{user?.fullname}</h1>
               <p className="text-sm">
-                Add your bio here Lorem ipsum dolor sit amet consectetur
-                adipisicing elit. Ad, non?
+                {user?.profile?.bio}
               </p>
             </div>
           </div>
@@ -40,18 +56,18 @@ const Profile = () => {
         <div className="my-2">
           <div className="flex items-center gap-3 my-2">
             <Mail />
-            <span>roman@gmail.com</span>
+            <span>{user?.email}</span>
           </div>
           <div className="flex items-center gap-3 my-2">
             <Contact />
-            <span>1654253658</span>
+            <span>{user?.phoneNumber}</span>
           </div>
         </div>
         <div className="my-4">
             <h1>Skills</h1>
             <div className="flex items-center gap-1">
             {
-                skills.length!==0? skills.map((item , index)=>{
+                   skills?.length!==0?skills?.map((item , index)=>{
                     return (
                         <Badge key={index}>{item}</Badge>
                     )
@@ -63,7 +79,7 @@ const Profile = () => {
             <Label className="font-bold">Resume</Label>
             <div>
             {
-                isResume ? <a target="blank" href="" className="text-sm text-blue-500 hover:underline">Resume Link</a> : <span>NA</span>
+                isResume ? <a target="blank" href={user.profile.resume} className="text-sm text-blue-500 hover:underline">Resume Link</a> : <span>NA</span>
             }
             </div>
         </div>

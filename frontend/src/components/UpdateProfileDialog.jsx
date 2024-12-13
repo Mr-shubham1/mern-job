@@ -7,6 +7,7 @@ import axios from "axios";
 import { setUser } from "@/redux/authslice";
 import { toast } from "sonner";
 import { USER_END_POINT } from "@/utils/constant";
+import { Loader2 } from "lucide-react";
 
 
 
@@ -37,6 +38,7 @@ const UpdateProfileDialog = ({ open, setOpen }) => {
 
   const onSubmitHandler = async (e)=>{
     e.preventDefault();
+    setLoading(true);
     const formdata = new FormData();
     formdata.append("fullname",input.fullname);
     formdata.append("email",input.email);
@@ -54,9 +56,11 @@ const UpdateProfileDialog = ({ open, setOpen }) => {
         },
         withCredentials:true
       })
-      if(res.data.message){
+      if(res.data.success){
         dispatch(setUser(res.data.user));
         toast.success(res.data.message);
+        setLoading(false);
+        setOpen(false);
       }
     } catch (error) {
       console.log(error)

@@ -37,7 +37,7 @@ const Navbar = () => {
               <PopoverTrigger asChild>
                 <Avatar className="cursor-pointer">
                   <AvatarImage
-                    src="https://github.com/shadcn.png"
+                    src={user?.profile?.profilephoto || "https://cdn-icons-png.flaticon.com/512/9385/9385289.png"}
                     alt="@shadcn"
                   />
                 </Avatar>
@@ -46,14 +46,14 @@ const Navbar = () => {
                 <div className="flex gap-5">
                   <Avatar className="cursor-pointer">
                     <AvatarImage
-                      src="https://github.com/shadcn.png"
+                      src={user?.profile?.profilephoto || "https://cdn-icons-png.flaticon.com/512/9385/9385289.png"}
                       alt="@shadcn"
                     />
                   </Avatar>
                   <div>
-                    <h4>User ka naam</h4>
+                    <h4>{user?.fullname}</h4>
                     <p className="text-sm text-muted-foreground">
-                      Lorem ipsum dolor sit amet.
+                      {user?.profile?.bio}
                     </p>
                   </div>
                 </div>
