@@ -95,10 +95,10 @@ const Signup = () => {
             <Label>Password</Label>
             <Input type="password" name="password" value={input.password} onChange={onChangeEventHandler} placeholder="enter Password" />
           </div>
-          <div className="flex items-center justify-between flex-wrap">
+          <div className="grid grid-cols-5 gap-x-8">
             <RadioGroup
               defaultValue="comfortable"
-              className="flex items-center gap-4 my-4"
+              className="flex items-center gap-4 my-4 col-span-2"
             >
               <div className="flex items-center space-x-2">
                 <input
@@ -123,7 +123,7 @@ const Signup = () => {
                 <Label htmlFor="r2">recruiter</Label>
               </div>
             </RadioGroup>
-            <div className="flex items-center gap-2 cursor-pointer">
+            <div className="col-span-3 cursor-pointer flex items-center">
             <Label>profile image</Label>
             <Input className="w-24 cursor-pointer" accept="image/*" type="file" name="file" onChange={onChangeFileHandler} />
             </div>

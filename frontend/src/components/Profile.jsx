@@ -9,12 +9,14 @@ import AppliedJobTable from "./AppliedJobTable";
 import UpdateProfileDialog from "./UpdateProfileDialog";
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
+import Updateprofilepicdialogue from "./Updateprofilepicdialogue";
 
 
 // const skills = ["HTML","CSS","Javascript","ReactJS","ExpressJS","MongoDB"]
 let isResume = false;
 const Profile = () => {
-    const [open,setOpen] = useState(false);
+    const [open1,setOpen1] = useState(false);
+    const [open2,setOpen2] = useState(false);
     const user = useSelector(store=>store.auth.user);
     const navigate = useNavigate();
 
@@ -38,6 +40,7 @@ const Profile = () => {
           <div className="flex items-center gap-4">
             <Avatar className="h-24 w-24">
               <AvatarImage
+                onClick={()=>setOpen2(true)}
                 src={user?.profile?.profilephoto || "https://cdn-icons-png.flaticon.com/512/9385/9385289.png"}
                 alt="@shadcn"
               />
@@ -49,7 +52,7 @@ const Profile = () => {
               </p>
             </div>
           </div>
-          <Button onClick = {()=>setOpen(true)} className="text-right" variant="outline" size="icon">
+          <Button onClick = {()=>setOpen1(true)} className="text-right" variant="outline" size="icon">
             <Pen />
           </Button>
         </div>
@@ -79,7 +82,7 @@ const Profile = () => {
             <Label className="font-bold">Resume</Label>
             <div>
             {
-                isResume ? <a target="blank" href={user.profile.resume} className="text-sm text-blue-500 hover:underline">Resume Link</a> : <span>NA</span>
+                isResume ? <a target="blank" href={user?.profile?.resume} className="text-sm text-blue-500 hover:underline">{user?.profile?.resumeoriginalname}</a> : <span>NA</span>
             }
             </div>
         </div>
@@ -89,7 +92,8 @@ const Profile = () => {
             {/* Applied Job Table */}
             <AppliedJobTable/>
       </div>
-      <UpdateProfileDialog open={open} setOpen = {setOpen}/>
+      <UpdateProfileDialog open={open1} setOpen = {setOpen1}/>
+      <Updateprofilepicdialogue open = {open2} setOpen = {setOpen2} />
     </div>
   );
 };

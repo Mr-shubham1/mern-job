@@ -4,11 +4,28 @@ import { Popover, PopoverContent, PopoverTrigger } from "../ui/popover";
 import { Button } from "../ui/button";
 import { LogOut, User2 } from "lucide-react";
 import { Link } from "react-router-dom";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { toast } from "sonner";
+import axios from "axios";
+import { USER_END_POINT } from "@/utils/constant";
+import { setUser } from "@/redux/authslice";
 
 
 const Navbar = () => {
   // const user = false;
+  const dispatch = useDispatch();
+  const logoutHandler = async ()=>{
+    try {
+      const res = await axios.get(`${USER_END_POINT}/logout`,{withCredentials:true})
+      if(res.data.success){
+        dispatch(setUser(null));
+        toast.success(res.data.message);
+      }
+    } catch (error) {
+      console.log(error);
+      toast.error(error.response.data.message);
+    }
+  }
   const {user} = useSelector(store=>store.auth);
   return (
     <>
@@ -64,7 +81,7 @@ const Navbar = () => {
                   </div>
                   <div className="flex items-center">
                     <LogOut />
-                    <Button variant="link">Logout</Button>
+                    <Button onClick = {logoutHandler} variant="link">Logout</Button>
                   </div>
                 </div>
               </PopoverContent>
