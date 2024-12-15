@@ -2,8 +2,13 @@ import React from "react";
 import { Badge } from "./ui/badge";
 import { Ghost } from "lucide-react";
 import { Button } from "./ui/button";
+import { useParams } from "react-router-dom";
+
 
 const JobDescription = () => {
+const params = useParams();
+const jobid = params.id;
+
   const isApplied = false;
   return (
     <div className="max-w-4xl mx-auto my-10">

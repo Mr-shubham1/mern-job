@@ -5,11 +5,11 @@ import { Badge } from "./ui/badge";
 import { Avatar, AvatarImage } from "./ui/avatar";
 import { useNavigate } from "react-router-dom";
 
-const jobid = "sdfghjhgfd";
-const Job = () => {
+// const jobid = "sdfghjhgfd";
+const Job = ({job}) => {
   const navigate = useNavigate();
   return (
-    <div className="p-2 w-[240px] border border-gray-100 shadow-xl bg-white rounded-md">
+    <div className="p-2 w-[240px] h-fit border border-gray-100 shadow-xl bg-white rounded-md">
       <div className="flex items-center justify-between">
         <p className="text-sm text-gray-500">2 days ago</p>
         <Button variant="outline" classname="rounded-full" size="icon">
@@ -27,21 +27,21 @@ const Job = () => {
           </Avatar>
         </Button>
         <div>
-          <h1 className="font-medium text-lg">Company Name</h1>
-          <p className="text-sm text-gray-500">India</p>
+          <h1 className="font-medium text-lg">{job?.company?.name}</h1>
+          <p className="text-sm text-gray-500">{job?.location}</p>
         </div>
       </div>
       <div>
-        <h1 className="font-bold text-lg my-2">Title</h1>
-        <p className="text-sm text-gray-600">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Voluptates, possimus similique a assumenda accusamus culpa ullam minima repellat blanditiis ex!</p>
+        <h1 className="font-bold text-lg my-2">{job?.title}</h1>
+        <p className="text-sm text-gray-600">{job?.description}</p>
       </div>
       <div className="flex items-center gap-2 mt-4">
-        <Badge className={"text-blue-700  "} variant={Ghost} >12 Positions</Badge>
-        <Badge className={"text-[#F83002] "} variant={Ghost} >Part Time</Badge>
-        <Badge className={"text-[#7209b7] "} variant={Ghost} >24 LPA</Badge>
+        <span className={"text-blue-700 text-sm font-bold "}>{job?.openings} positions</span>
+        <Badge className={"text-[#F83002] "} variant={Ghost} >{job?.jobtype}</Badge>
+        <Badge className={"text-[#7209b7] "} variant={Ghost} >{job?.salary/100000} LPA</Badge>
       </div>
       <div className="flex items-center gap-4 mt-4">
-        <Button onClick={(e)=>navigate(`/description/${jobid}`)} variant="outline">Details </Button>
+        <Button onClick={(e)=>navigate(`/description/${job?._id}`)} variant="outline">Details </Button>
         <Button className="bg-[#7209b7]">Save for later</Button>
       </div>
     </div>

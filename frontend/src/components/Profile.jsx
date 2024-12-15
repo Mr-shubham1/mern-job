@@ -59,7 +59,7 @@ const Profile = () => {
         <div className="my-2">
           <div className="flex items-center gap-3 my-2">
             <Mail />
-            <span>{user?.email}</span>
+            <span> <a className="text-blue-800" href={user?.email ? `mailto:${user.email}` : '#'}>{user?.email || 'No email available'}</a></span>
           </div>
           <div className="flex items-center gap-3 my-2">
             <Contact />
