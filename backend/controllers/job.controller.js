@@ -107,8 +107,6 @@ export const getJobById = async (req,res)=>{
     } catch (error) {
         console.log("catch error in getJobById :-" + error);
     }
-    
-
 }        // ✅ tested
 
 

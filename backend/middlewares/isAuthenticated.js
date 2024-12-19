@@ -6,7 +6,7 @@ const isAuthenticated = (req,res,next)=>{
     const token = req.cookies.token;
     if(!token){
         return res.status(401).json({
-            message:"user is not Authenticated",
+            message:"not Authenticated , you must be logged in to apply",
             success:false
         })
     }

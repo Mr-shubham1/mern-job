@@ -275,9 +275,6 @@ export const updateprofile = async (req,res)=>{
 
 export const updateprofilepic = async (req,res)=>{
   try {
-
-
-    
         // Cloudinary setup/configuring
         cloudinary.config({
           cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
