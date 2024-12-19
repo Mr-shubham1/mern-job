@@ -8,10 +8,26 @@ import { useNavigate } from "react-router-dom";
 // const jobid = "sdfghjhgfd";
 const Job = ({job}) => {
   const navigate = useNavigate();
+  const daysagofunction = (mongodbTime)=>{
+    if (!mongodbTime) {
+      console.error("Invalid date provided.");
+      return null;
+    }
+    const createdTime = new Date(mongodbTime);
+    // console.log(createdTime);
+    const currentTime = new Date();
+    // console.log(currentTime);
+    const timeDiff = currentTime-createdTime; // this time is in milisecond
+    const timeDiffinDays = timeDiff/(24*60*60*1000);
+    // console.log(timeDiff+" in millisecond");
+    // console.log(timeDiffinDays+" in days");
+    return Math.floor(timeDiffinDays);
+  }
+  // daysagofunction(job?.createdAt);
   return (
     <div className="p-2 w-[240px] h-fit border border-gray-100 shadow-xl bg-white rounded-md">
       <div className="flex items-center justify-between">
-        <p className="text-sm text-gray-500">2 days ago</p>
+        <p className="text-sm text-gray-500">{daysagofunction(job?.createdAt)} days ago</p>
         <Button variant="outline" classname="rounded-full" size="icon">
           <Bookmark />
         </Button>
