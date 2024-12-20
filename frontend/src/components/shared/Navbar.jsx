@@ -10,14 +10,15 @@ import axios from "axios";
 import { USER_END_POINT } from "@/utils/constant";
 import { setUser } from "@/redux/authslice";
 
-
 const Navbar = () => {
   // const user = false;
   const dispatch = useDispatch();
-  const logoutHandler = async ()=>{
+  const logoutHandler = async () => {
     try {
-      const res = await axios.get(`${USER_END_POINT}/logout`,{withCredentials:true})
-      if(res.data.success){
+      const res = await axios.get(`${USER_END_POINT}/logout`, {
+        withCredentials: true,
+      });
+      if (res.data.success) {
         dispatch(setUser(null));
         toast.success(res.data.message);
       }
@@ -25,8 +26,8 @@ const Navbar = () => {
       console.log(error);
       toast.error(error.response.data.message);
     }
-  }
-  const {user} = useSelector(store=>store.auth);
+  };
+  const { user } = useSelector((store) => store.auth);
   return (
     <>
       <div className="flex max-w-5xl items-center justify-between mx-auto h-16">
@@ -35,26 +36,37 @@ const Navbar = () => {
         </h1>
         <div className="flex items-center gap-12">
           <ul className="flex font-medium items-center gap-8">
-            
+            {user && user?.role == "recruiter" ? <>
+              <Link to="/admin/companies">Companies</Link>
+              <Link to="admin/jobs">Jobs</Link></>
+              : <>
             <Link to="/">Home</Link>
             <Link to="/jobs">Jobs</Link>
             <Link to="/browse">Browse</Link>
+              </>}
+            
           </ul>
           {!user ? (
             <div className="flex items-center gap-2">
-              {
-
-              }
-              <Link to="/login"><Button variant="outline">Login</Button></Link>
-              <Link to="/signup" ><Button className="bg-[#6A38C2] hover:bg-[#542a9c]">Sign up</Button></Link>
+              {}
+              <Link to="/login">
+                <Button variant="outline">Login</Button>
+              </Link>
+              <Link to="/signup">
+                <Button className="bg-[#6A38C2] hover:bg-[#542a9c]">
+                  Sign up
+                </Button>
+              </Link>
             </div>
-
           ) : (
             <Popover>
               <PopoverTrigger asChild>
                 <Avatar className="cursor-pointer">
                   <AvatarImage
-                    src={user?.profile?.profilephoto || "https://cdn-icons-png.flaticon.com/512/9385/9385289.png"}
+                    src={
+                      user?.profile?.profilephoto ||
+                      "https://cdn-icons-png.flaticon.com/512/9385/9385289.png"
+                    }
                     alt="@shadcn"
                   />
                 </Avatar>
@@ -63,25 +75,35 @@ const Navbar = () => {
                 <div className="flex gap-5">
                   <Avatar className="cursor-pointer">
                     <AvatarImage
-                      src={user?.profile?.profilephoto || "https://cdn-icons-png.flaticon.com/512/9385/9385289.png"}
+                      src={
+                        user?.profile?.profilephoto ||
+                        "https://cdn-icons-png.flaticon.com/512/9385/9385289.png"
+                      }
                       alt="@shadcn"
                     />
                   </Avatar>
                   <div>
-                    <h4>{user?.fullname}</h4>
+                    <h4 className="font-semibold">{user?.fullname}</h4>
                     <p className="text-sm text-muted-foreground">
                       {user?.profile?.bio}
                     </p>
                   </div>
                 </div>
                 <div className="flex flex-col items-start mt-2">
-                  <div className="flex items-center">
+                  {
+                    user && user.role==="student" && <div className="flex items-center">
                     <User2 />
-                    <Button variant="link"> <Link to="/profile">View profile</Link></Button>
+                    <Button variant="link">
+                      <Link to="/profile">View profile</Link>
+                    </Button>
                   </div>
+                  }
+                  
                   <div className="flex items-center">
                     <LogOut />
-                    <Button onClick = {logoutHandler} variant="link">Logout</Button>
+                    <Button onClick={logoutHandler} variant="link">
+                      Logout
+                    </Button>
                   </div>
                 </div>
               </PopoverContent>
