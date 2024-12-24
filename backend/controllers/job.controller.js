@@ -114,7 +114,9 @@ export const getJobById = async (req,res)=>{
 export const getJobsByCreator = async (req,res)=>{
     try {
         const creatorId = req.id;
-        const jobs = await Job.find({created_by:creatorId});
+        const jobs = await Job.find({created_by:creatorId}).populate({
+         path:"company"   
+        }).sort({createdAt:-1});
         if(!jobs){
             return res.status(404).json({
                 message:"jobs not found",

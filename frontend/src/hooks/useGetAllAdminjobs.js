@@ -13,7 +13,7 @@ const useGetAllAdminjobs = () => {
           withCredentials: true,
         });
         if (res.data.success) {
-          console.log(res.data.jobs);
+          // console.log(res.data.jobs);
           dispatch(setAllAdminjobs(res.data.jobs));
         }
       } catch (error) {

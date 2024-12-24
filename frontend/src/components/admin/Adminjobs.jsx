@@ -2,10 +2,8 @@ import React, { useEffect, useState } from "react";
 import Navbar from "../shared/Navbar";
 import { Input } from "../ui/input";
 import { Button } from "../ui/button";
-import CompaniesTable from "./CompaniesTable";
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
-import { setsearchCompanyBytext } from "@/redux/companyslice";
 import AdminJobsTable from "./AdminJobsTable";
 import { setSearchJobBytext } from "@/redux/jobslice";
 
@@ -27,9 +25,9 @@ const Adminjobs = () => {
             }}
             value={searchinput}
             className="w-fit"
-            placeholder="Filter by name"
+            placeholder="Filter by name or role"
           />
-          <Button onClick={() => navigate("/admin/company/create")}>
+          <Button onClick={() => navigate("/admin/jobs/create")}>
             New Job
           </Button>
         </div>

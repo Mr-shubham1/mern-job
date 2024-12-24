@@ -37,7 +37,7 @@ const Job = ({job}) => {
         <Button variant="outline" classname="rounded-full p-6" size="icon">
           <Avatar className="cursor-pointer rounded-full">
             <AvatarImage
-              src="https://www.shutterstock.com/image-vector/circle-line-simple-design-logo-600nw-2174926871.jpg"
+              src= {job?.company?.logo || "https://www.shutterstock.com/image-vector/circle-line-simple-design-logo-600nw-2174926871.jpg"}
               alt="@shadcn"
             />
           </Avatar>

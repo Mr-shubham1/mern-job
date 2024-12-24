@@ -38,7 +38,7 @@ const JobDescription = () => {
       }
     };
     fetchsinglejob();
-  }, [jobid, dispatch, user?._id]);
+  }, [jobid, dispatch, user?._id , isApplied]);
 
   // const isApplied = false;
 
