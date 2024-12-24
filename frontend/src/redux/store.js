@@ -5,6 +5,7 @@ import storage from "redux-persist/lib/storage";  // local storage for web
 import authSlice from "../redux/authslice"
 import jobSlice from "../redux/jobslice"
 import companySlice from "../redux/companyslice"
+import applicationslice from "../redux/applicationslice"
 
 // const store = configureStore({
 //     reducer:{
@@ -24,7 +25,8 @@ const persistConfig = {
 const rootReducer = combineReducers({
     auth: authSlice,
     job: jobSlice,
-    company:companySlice
+    company:companySlice,
+    application:applicationslice
 });
 
 // Wrap the root reducer with persistReducer

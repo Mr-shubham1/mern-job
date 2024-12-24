@@ -9,7 +9,7 @@ import {
 } from "../ui/table";
 import { Avatar, AvatarImage } from "../ui/avatar";
 import { Popover, PopoverContent, PopoverTrigger } from "../ui/popover";
-import { CookingPot, Edit2, MoreHorizontal } from "lucide-react";
+import { CookingPot, Edit2, Eye, MoreHorizontal } from "lucide-react";
 import { useSelector } from "react-redux";
 import useGetallcompany from "@/hooks/useGetallcompany";
 import { useNavigate } from "react-router-dom";
@@ -29,10 +29,12 @@ const AdminJobsTable = () => {
         if (!searchtext) {
           return true;
         }
-        return job?.title?.toLowerCase().includes(searchtext?.toLowerCase()) || job?.company?.name?.toLowerCase().includes(searchtext.toLowerCase());
+        return (
+          job?.title?.toLowerCase().includes(searchtext?.toLowerCase()) ||
+          job?.company?.name?.toLowerCase().includes(searchtext.toLowerCase())
+        );
       });
     setFilteredjobs(tempjobs);
-    
   }, [allAdminjobs, searchtext]);
   return (
     <div className="max-w-3xl mx-auto">
@@ -61,15 +63,24 @@ const AdminJobsTable = () => {
                       <PopoverTrigger>
                         <MoreHorizontal />
                       </PopoverTrigger>
-                      <PopoverContent className="w-fit px-4 py-2">
+                      <PopoverContent className="w-fit px-3 py-2">
                         <div
                           onClick={() =>
-                            navigate(`/admin/company/create/${job._id}`)
+                            navigate(`/admin/company/create/${job._id}`)  // i have to fix it
                           }
-                          className="flex items-center gap-x-6 cursor-pointer"
+                          className="flex items-center gap-x-2 cursor-pointer"
                         >
-                          <Edit2 />
+                          <Edit2 className="h-4"/>
                           <span>Edit</span>
+                        </div>
+                        <div
+                          onClick={() =>
+                            navigate(`/admin/jobs/${job._id}/applicants`)
+                          }
+                          className="flex items-center gap-x-2 cursor-pointer mt-2"
+                        >
+                          <Eye className="h-4" />
+                          <span>Applicants</span>
                         </div>
                       </PopoverContent>
                     </Popover>

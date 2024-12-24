@@ -9,7 +9,7 @@ import {
 } from "../ui/table";
 import { Avatar, AvatarImage } from "../ui/avatar";
 import { Popover, PopoverContent, PopoverTrigger } from "../ui/popover";
-import { Edit2, MoreHorizontal } from "lucide-react";
+import { Edit2, Eye, MoreHorizontal } from "lucide-react";
 import { useSelector } from "react-redux";
 import useGetallcompany from "@/hooks/useGetallcompany";
 import { useNavigate } from "react-router-dom";
@@ -67,9 +67,9 @@ const CompaniesTable = () => {
                       <PopoverTrigger>
                         <MoreHorizontal />
                       </PopoverTrigger>
-                      <PopoverContent className="w-fit px-4 py-2">
-                        <div onClick={()=>navigate(`/admin/company/create/${company._id}`)} className="flex items-center gap-x-6 cursor-pointer">
-                          <Edit2 />
+                      <PopoverContent className="w-fit px-3 py-2">
+                        <div onClick={()=>navigate(`/admin/company/create/${company._id}`)} className="flex items-center gap-x-4 cursor-pointer">
+                          <Edit2 className="h-4"/>
                           <span>Edit</span>
                         </div>
                       </PopoverContent>
