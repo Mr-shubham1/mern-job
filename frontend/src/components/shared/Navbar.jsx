@@ -31,8 +31,8 @@ const Navbar = () => {
   return (
     <>
       <div className="flex max-w-5xl items-center justify-between mx-auto h-16">
-        <h1 className="text-2xl font-bold">
-          Job <span className="text-[#F83802]">Portal</span>{" "}
+        <h1 className="text-2xl font-bold text-[#6A38C2]">
+          jobJunction <span className="text-[#F83802]">.com</span>{" "}
         </h1>
         <div className="flex items-center gap-12">
           <ul className="flex font-medium items-center gap-8">

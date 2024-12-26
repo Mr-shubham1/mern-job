@@ -47,15 +47,13 @@ const onSubmitHandler = async (e)=>{
       } catch (error) {
         console.log("catch error in onSubmitHandler" + error);
         toast.error(error.response.data.message);
+        dispatch(setLoading(false));
         
       } finally{
         dispatch(setLoading(false));
       }
         
 }
-
-
-
 
   return (
     <div>

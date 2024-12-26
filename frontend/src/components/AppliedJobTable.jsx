@@ -10,8 +10,14 @@ import {
   TableRow,
 } from "./ui/table";
 import { Badge } from "./ui/badge";
+import useGetappliedjobs from "@/hooks/useGetappliedjobs";
+import { useSelector } from "react-redux";
+import { SpaceIcon } from "lucide-react";
 
 const AppliedJobTable = () => {
+  useGetappliedjobs();
+  const appliedjobs = useSelector((store) => store.job.appliedjobs);
+  // console.log(appliedjobs);
   return (
     <div className="mb-2">
       <Table>
@@ -19,22 +25,34 @@ const AppliedJobTable = () => {
         <TableHeader>
           <TableRow>
             <TableHead className="w-[100px]">Date</TableHead>
-            <TableHead>Role</TableHead>
-            <TableHead>Company</TableHead>
+            <TableHead className="text-center">Role</TableHead>
+            <TableHead className="text-center">Company</TableHead>
             <TableHead className="text-right">Status</TableHead>
           </TableRow>
         </TableHeader>
         <TableBody>
-          {[1, 2, 3].map((item, index) => (
-            <TableRow key={index}>
-              <TableCell className="font-medium">11/15/2024</TableCell>
-              <TableCell>Software developer</TableCell>
-              <TableCell>Google</TableCell>
+          {appliedjobs.length>0 ? appliedjobs?.map((appliedjob) => (
+            <TableRow key={appliedjob._id}>
+              <TableCell className="font-medium ">
+                {new Date(appliedjob?.createdAt).toLocaleDateString("en-GB", {
+                  day: "2-digit",
+                  month: "2-digit",
+                  year: "numeric",
+                })}
+              </TableCell>
+              <TableCell className="text-center">{appliedjob?.job?.title}</TableCell>
+              <TableCell className="text-center">{appliedjob?.job?.company?.name}</TableCell>
               <TableCell className="text-right">
-                <Badge>Selected</Badge>
+                <Badge className={`${appliedjob?.status==="accepted"?"text-green-600 bg-green-200":appliedjob.status==="rejected"?"text-red-600 bg-red-200":"text-yellow-500 bg-yellow-100"}`}>{appliedjob?.status}</Badge>
               </TableCell>
             </TableRow>
-          ))}
+          )):
+          <TableRow>
+            <TableCell className="text-center text-red-500 font-semibold text-sm" colspan ={4}>
+            *you haven't applied for any jobs yet.
+            </TableCell>
+          </TableRow>
+          }
         </TableBody>
       </Table>
     </div>

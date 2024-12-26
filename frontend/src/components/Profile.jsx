@@ -40,6 +40,7 @@ const Profile = () => {
           <div className="flex items-center gap-4">
             <Avatar className="h-24 w-24">
               <AvatarImage
+                className="cursor-pointer"
                 onClick={()=>setOpen2(true)}
                 src={user?.profile?.profilephoto || "https://cdn-icons-png.flaticon.com/512/9385/9385289.png"}
                 alt="@shadcn"
