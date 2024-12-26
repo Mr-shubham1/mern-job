@@ -26,7 +26,7 @@ const CardFilter = () => {
         <RadioGroup defaultValue="comfortable">
           {filterData.map((item, index) => {
             return (
-              <div>
+              <div key={item._id}>
                 <h1 className="font-semibold text-lg">{item.filterType}</h1>
                 {item.filters.map((item, index) => {
                   return (
