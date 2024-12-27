@@ -4,6 +4,8 @@ import { Bookmark, Ghost } from "lucide-react";
 import { Badge } from "./ui/badge";
 import { Avatar, AvatarImage } from "./ui/avatar";
 import { useNavigate } from "react-router-dom";
+import Navbar from "./shared/Navbar";
+import Footer from "./Footer";
 
 // const jobid = "sdfghjhgfd";
 const Job = ({job}) => {
@@ -25,6 +27,7 @@ const Job = ({job}) => {
   }
   // daysagofunction(job?.createdAt);
   return (
+    
     <div className="p-2 w-[240px] h-fit border border-gray-100 shadow-xl bg-white rounded-md">
       <div className="flex items-center justify-between">
         <p className="text-sm text-gray-500">{daysagofunction(job?.createdAt)} days ago</p>
@@ -33,7 +36,7 @@ const Job = ({job}) => {
         </Button>
       </div>
 
-      <div className="flex items-center gap-2 my-2">
+      <div className="flex items-center gap-2">
         <Button variant="outline" classname="rounded-full p-6" size="icon">
           <Avatar className="cursor-pointer rounded-full">
             <AvatarImage
@@ -48,19 +51,21 @@ const Job = ({job}) => {
         </div>
       </div>
       <div>
-        <h1 className="font-bold text-lg my-2">{job?.title}</h1>
-        <p className="text-sm text-gray-600">{job?.description}</p>
+        <h1 className="font-bold text-lg">{job?.title}</h1>
+        <p className="text-sm text-gray-800 leading-snug tracking-wide line-clamp-3">{job?.description}</p>
       </div>
-      <div className="flex items-center gap-2 mt-4">
-        <span className={"text-blue-700 text-sm font-bold "}>{job?.openings} positions</span>
-        <Badge className={"text-[#F83002] "} variant={Ghost} >{job?.jobtype}</Badge>
+      <div className="flex items-center justify-around mt-2">
+        <span className={"text-blue-700 text-sm font-semibold "}>{job?.openings} positions</span>
+        <Badge className={"text-[#F83002]"} variant={Ghost} >{job?.jobtype}</Badge>
         <Badge className={"text-[#7209b7] "} variant={Ghost} >{job?.salary/100000} LPA</Badge>
       </div>
-      <div className="flex items-center gap-4 mt-4">
-        <Button onClick={(e)=>navigate(`/description/${job?._id}`)} variant="outline">Details </Button>
-        <Button className="bg-[#7209b7]">Save for later</Button>
+      <div className="flex items-center justify-between px-2 mt-4">
+        <Button className="h-7 w-fit px-3" onClick={(e)=>navigate(`/description/${job?._id}`)} variant="outline">Details </Button>
+        <Button className="bg-[#7209b7] h-7 w-fit px-3">Save for later</Button>
       </div>
     </div>
+    
+    
   );
 };
 

@@ -82,12 +82,12 @@ const Postjobs = () => {
   return (
     <div>
       <Navbar />
-      <div className="flex items-center justify-center gap-4 my-4">
+      <div className="  flex items-center justify-center  my-4">
         <form
           onSubmit={submitHandler}
-          className=" max-w-3xl p-8 border border-gray-200 shadow-lg rounded-md"
+          className=" max-w-5xl p-4 border border-gray-200 shadow-lg rounded-md"
         >
-          <div className="grid grid-cols-2 gap-4">
+          <div className="grid grid-cols-2 gap-4 ">
             <div>
               <Label>Title</Label>
               <Input
@@ -95,7 +95,7 @@ const Postjobs = () => {
                 name="title"
                 value={input.title}
                 onChange={changeEventHandler}
-                className="w-40 focus-visible:ring-0 focus-visible:ring-offset-0"
+                className="w-52 focus-visible:ring-0 focus-visible:ring-offset-0"
               />
             </div>
             <div>
@@ -105,7 +105,7 @@ const Postjobs = () => {
                 name="description"
                 value={input.description}
                 onChange={changeEventHandler}
-                className="w-40 focus-visible:ring-0 focus-visible:ring-offset-0"
+                className=" focus-visible:ring-0 focus-visible:ring-offset-0"
               />
             </div>
             <div>
@@ -113,9 +113,10 @@ const Postjobs = () => {
               <Input
                 type="text"
                 name="requirements"
+                placeholder="Seperate with commas only"
                 value={input.requirements}
                 onChange={changeEventHandler}
-                className="w-40 focus-visible:ring-0 focus-visible:ring-offset-0"
+                className=" focus-visible:ring-0 focus-visible:ring-offset-0"
               />
             </div>
             <div>
@@ -124,9 +125,9 @@ const Postjobs = () => {
                 type="text"
                 name="salary"
                 value={input.salary}
-                placeholder="*numeric only"
+                placeholder="*numeric only in INR/Year"
                 onChange={changeEventHandler}
-                className="w-40 focus-visible:ring-0 focus-visible:ring-offset-0"
+                className=" focus-visible:ring-0 focus-visible:ring-offset-0"
               />
             </div>
             <div>
@@ -136,7 +137,7 @@ const Postjobs = () => {
                 name="location"
                 value={input.location}
                 onChange={changeEventHandler}
-                className="w-40 focus-visible:ring-0 focus-visible:ring-offset-0"
+                className=" focus-visible:ring-0 focus-visible:ring-offset-0"
               />
             </div>
             <div>
@@ -144,9 +145,10 @@ const Postjobs = () => {
               <Input
                 type="text"
                 name="jobtype"
+                placeholder="Fulltime,Parttime or intern"
                 value={input.jobtype}
                 onChange={changeEventHandler}
-                className="w-40 focus-visible:ring-0 focus-visible:ring-offset-0"
+                className=" focus-visible:ring-0 focus-visible:ring-offset-0"
               />
             </div>
             <div>
@@ -155,9 +157,9 @@ const Postjobs = () => {
                 type="text"
                 name="experience"
                 value={input.experience}
-                placeholder="*numeric only"
+                placeholder="*numeric only in Years"
                 onChange={changeEventHandler}
-                className="w-40 focus-visible:ring-0 focus-visible:ring-offset-0"
+                className=" focus-visible:ring-0 focus-visible:ring-offset-0"
               />
             </div>
             <div>
@@ -167,7 +169,7 @@ const Postjobs = () => {
                 name="openings"
                 value={input.openings}
                 onChange={changeEventHandler}
-                className="w-40 focus-visible:ring-0 focus-visible:ring-offset-0"
+                className=" focus-visible:ring-0 focus-visible:ring-offset-0"
               />
             </div>
             {companies.length !== 0 && (

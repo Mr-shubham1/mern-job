@@ -12,6 +12,7 @@ import CreateCompanybyId from "./components/admin/CreateCompanybyId";
 import Adminjobs from "./components/admin/Adminjobs";
 import Postjobs from "./components/admin/Postjobs";
 import Applicants from "./components/admin/Applicants";
+import About from "./components/About";
 
 
 
@@ -20,6 +21,11 @@ const appRouter = createBrowserRouter([
     path:"/",
     element:<Home/>
   },
+  {
+    path:"/about",
+    element:<About/>
+  },
+
   {
     path:"/login",
     element:<Login/>

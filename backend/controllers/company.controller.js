@@ -129,6 +129,7 @@ export const updateCompany = async (req, res) => {
     }
 
     const updatedata = { name, description, website, location , logo:optimizedUrl };
+    // console.log(requirements);
     let company = await Company.findByIdAndUpdate(req.params.id, updatedata, {
       new: true,
     });

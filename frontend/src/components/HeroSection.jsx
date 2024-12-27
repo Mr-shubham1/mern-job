@@ -17,31 +17,31 @@ const HeroSection = () => {
     navigate(`/browse`);
   };
   return (
-    <div className="text-center">
+    <div className="text-center sm:px-6 lg:px-8">
       <div className="flex flex-col gap-5 my-5">
-        <span className="mx-auto px-4 py-2 rounded-full bg-gray-100 text-[#F83002]">
+        <span className="mx-auto px-4 py-2 rounded-full bg-gray-100 text-[#F83002] text-sm md:text-base lg:text-lg">
           No. 1 Job hunt Website
         </span>
-        <h1 className="text-5xl font-bold">
+        <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold">
           Search Apply & <br /> Get Your{" "}
           <span className="text-[#6A38C2]">Dream Jobs</span>
         </h1>
-        <p>
+        <p className="text-sm sm:text-base md:text-lg ">
           Find opportunities that match your skills and ambitions.
           <br /> With personalized recommendations and expert guidance, landing
           your dream job is just a click away!
         </p>
-        <div className="flex w-[40%] border border-gray-200 pl-3 rounded-full items-center gap-4 mx-auto shadow-lg">
+        <div className="flex flex-col sm:flex-row w-full sm:w-[70%] lg:w-[40%] border border-gray-200 pl-3 rounded-full items-center gap-4 mx-auto shadow-lg">
           <input
             type="text"
             value={searchedQuerrytext}
             onChange={changeEventHandler}
             placeholder="Find Your Dream Jobs"
-            className="border-none outline-none w-full"
+            className="border-none outline-none w-full text-sm sm:text-base"
           />
           <Button
             onClick={browseHandler}
-            className="rounded-r-full bg-[#6A38C2]"
+            className=" sm:rounded-r-full  bg-[#6A38C2] w-1/2 sm:w-auto"
           >
             <Search className="h-5 w-5" />
           </Button>

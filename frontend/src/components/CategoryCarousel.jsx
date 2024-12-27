@@ -29,11 +29,11 @@ const CategoryCarousel = () => {
   }
   return (
     <div>
-      <Carousel className="w-full max-w-sm mx-auto gap-4">
-        <CarouselContent className="-ml-1">
+      <Carousel className="w-full max-w-[200px] sm:max-w-sm  mx-auto gap-4">
+        <CarouselContent className="-ml-1 mx-4">
           {category.map((cat, index) => {
             return (
-              <CarouselItem key={index} className="pl-1 md:basis-1/2 lg:basis-1/3 mx-7">
+              <CarouselItem key={index} className="pl-1  md:basis-1/2 lg:basis-1/3 mx-7">
                 <Button onClick={()=>{querryHandler(cat)}} variant="outline"  className="text-center rounded-full">{cat}</Button>
               </CarouselItem>
             );

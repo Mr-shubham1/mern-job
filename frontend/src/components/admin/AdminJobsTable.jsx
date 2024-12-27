@@ -9,7 +9,7 @@ import {
 } from "../ui/table";
 import { Avatar, AvatarImage } from "../ui/avatar";
 import { Popover, PopoverContent, PopoverTrigger } from "../ui/popover";
-import { CookingPot, Edit2, Eye, MoreHorizontal } from "lucide-react";
+import { ClipboardX,Eye, MoreHorizontal} from "lucide-react";
 import { useSelector } from "react-redux";
 import useGetallcompany from "@/hooks/useGetallcompany";
 import { useNavigate } from "react-router-dom";
@@ -70,8 +70,8 @@ const AdminJobsTable = () => {
                           }
                           className="flex items-center gap-x-2 cursor-pointer"
                         >
-                          <Edit2 className="h-4"/>
-                          <span>Edit</span>
+                          <ClipboardX className="h-4"/>
+                          <span>Delete</span>
                         </div>
                         <div
                           onClick={() =>

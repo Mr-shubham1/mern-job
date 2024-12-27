@@ -114,6 +114,16 @@ const JobDescription = () => {
           </span>
         </h1>
         <h1 className="font-bold my-1">
+          Requirements:{" "}
+          <span className="pl-4 font-normal text-gray-800">
+            { 
+              singlejob?.job?.requirements[0]?.split(",").length>0? singlejob?.job?.requirements[0]?.split(",").map((skill)=>{
+                return <Button  className="cursor-default px-3 h-5 mx-2 rounded-full bg-[#6A38C2]">{skill}</Button>
+              }) : <span className="text-sm font-semibold text-gray-700">Not specified by the organization</span>
+            } 
+          </span>
+        </h1>
+        <h1 className="font-bold my-1">
           Experience:{" "}
           <span className="pl-4 font-normal text-gray-800">
             {singlejob?.job?.experience} Years
