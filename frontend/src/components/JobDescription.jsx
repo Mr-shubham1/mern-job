@@ -17,8 +17,9 @@ const JobDescription = () => {
   // console.log(singlejob.job);
   const dispatch = useDispatch();
 
-
-  const [isApplied, setIsApplied] = useState(singlejob?.job?.application.some((i)=>i.applicant?._id===user._id));
+  const [isApplied, setIsApplied] = useState(
+    singlejob?.job?.application.some((i) => i.applicant?._id === user._id)
+  );
   useEffect(() => {
     const fetchsinglejob = async () => {
       try {
@@ -38,10 +39,9 @@ const JobDescription = () => {
       }
     };
     fetchsinglejob();
-  }, [jobid, dispatch, user?._id , isApplied]);
+  }, [jobid, dispatch, user?._id, isApplied]);
 
   // const isApplied = false;
-
 
   const applyJObHndler = async () => {
     try {
@@ -96,43 +96,61 @@ const JobDescription = () => {
       </h1>
       <div className="my-4">
         <h1 className="font-bold my-1">
-          Role:{" "}
+          Role:
           <span className="pl-4 font-normal text-gray-800">
             {singlejob?.job?.title}
           </span>
         </h1>
         <h1 className="font-bold my-1">
-          Location:{" "}
+          Location:
           <span className="pl-4 font-normal text-gray-800">
             {singlejob?.job?.location}
           </span>
         </h1>
         <h1 className="font-bold my-1">
-          Description:{" "}
+          Description:
           <span className="pl-4 font-normal text-gray-800">
             {singlejob?.job?.description}
           </span>
         </h1>
         <h1 className="font-bold my-1">
-          Experience:{" "}
+          Requirements:
+          <span className="pl-4 font-normal text-gray-800">
+            {singlejob?.job?.requirements[0]?.split(",").length > 0 ? (
+              singlejob?.job?.requirements[0]?.split(",").map((skill) => {
+                return (
+                  <Button className="cursor-default px-3 h-5 mx-2 rounded-full bg-[#6A38C2]">
+                    {skill}
+                  </Button>
+                );
+              })
+            ) : (
+              <span className="text-sm font-semibold text-gray-700">
+                Not specified by the organization
+              </span>
+            )}
+          </span>
+        </h1>
+        <h1 className="font-bold my-1">
+          Experience:
           <span className="pl-4 font-normal text-gray-800">
             {singlejob?.job?.experience} Years
           </span>
         </h1>
         <h1 className="font-bold my-1">
-          Salary:{" "}
+          Salary:
           <span className="pl-4 font-normal text-gray-800">
             {singlejob?.job?.salary / 100000} LPA
           </span>
         </h1>
         <h1 className="font-bold my-1">
-          Total Applicants:{" "}
+          Total Applicants:
           <span className="pl-4 font-normal text-gray-800">
             {singlejob?.job?.application?.length}
           </span>
         </h1>
         <h1 className="font-bold my-1">
-          Posted Date:{" "}
+          Posted Date:
           <span className="pl-4 font-normal text-gray-800">
             {singlejob?.job?.createdAt?.split("T")[0]}
           </span>
