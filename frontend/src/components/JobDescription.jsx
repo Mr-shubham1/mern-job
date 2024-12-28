@@ -12,6 +12,7 @@ import { toast } from "sonner";
 const JobDescription = () => {
   const params = useParams();
   const jobid = params.id;
+  // console.log(jobid);
   const user = useSelector((store) => store.auth.user || {});
   const { singlejob } = useSelector((store) => store.job);
   // console.log(singlejob.job);

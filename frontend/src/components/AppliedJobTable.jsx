@@ -13,9 +13,11 @@ import { Badge } from "./ui/badge";
 import useGetappliedjobs from "@/hooks/useGetappliedjobs";
 import { useSelector } from "react-redux";
 import { SpaceIcon } from "lucide-react";
+import { useNavigate } from "react-router-dom";
 
 const AppliedJobTable = () => {
   useGetappliedjobs();
+  const navigate = useNavigate();
   const appliedjobs = useSelector((store) => store.job.appliedjobs);
   // console.log(appliedjobs);
   return (
@@ -32,7 +34,7 @@ const AppliedJobTable = () => {
         </TableHeader>
         <TableBody>
           {appliedjobs.length>0 ? appliedjobs?.map((appliedjob) => (
-            <TableRow key={appliedjob._id}>
+            <TableRow className="cursor-pointer" onClick={(e)=>navigate(`/description/${appliedjob?.job?._id}`)} key={appliedjob._id}>
               <TableCell className="font-medium ">
                 {new Date(appliedjob?.createdAt).toLocaleDateString("en-GB", {
                   day: "2-digit",
