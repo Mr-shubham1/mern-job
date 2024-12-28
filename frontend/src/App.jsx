@@ -13,6 +13,7 @@ import Adminjobs from "./components/admin/Adminjobs";
 import Postjobs from "./components/admin/Postjobs";
 import Applicants from "./components/admin/Applicants";
 import About from "./components/About";
+import Contact from "./components/Contact";
 
 
 
@@ -25,6 +26,11 @@ const appRouter = createBrowserRouter([
     path:"/about",
     element:<About/>
   },
+  {
+    path:"/contact",
+    element:<Contact/>
+  },
+
 
   {
     path:"/login",

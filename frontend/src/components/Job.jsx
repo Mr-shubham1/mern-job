@@ -4,8 +4,7 @@ import { Bookmark, Ghost } from "lucide-react";
 import { Badge } from "./ui/badge";
 import { Avatar, AvatarImage } from "./ui/avatar";
 import { useNavigate } from "react-router-dom";
-import Navbar from "./shared/Navbar";
-import Footer from "./Footer";
+
 
 // const jobid = "sdfghjhgfd";
 const Job = ({job}) => {
@@ -28,30 +27,31 @@ const Job = ({job}) => {
   // daysagofunction(job?.createdAt);
   return (
     
-    <div className="p-2 w-[240px] h-fit border border-gray-100 shadow-xl bg-white rounded-md">
+    <div className="p-2 w-[240px] h-fit border border-gray-100 shadow-xl bg-white rounded-md transition-transform transform hover:scale-105 hover:shadow-2xl">
       <div className="flex items-center justify-between">
-        <p className="text-sm text-gray-500">{daysagofunction(job?.createdAt)} days ago</p>
+        <p className=" text-xs text-gray-500 italic">{daysagofunction(job?.createdAt)} days ago</p>
         <Button variant="outline" classname="rounded-full" size="icon">
-          <Bookmark />
+          <Bookmark size={18} />
         </Button>
       </div>
 
-      <div className="flex items-center gap-2">
-        <Button variant="outline" classname="rounded-full p-6" size="icon">
-          <Avatar className="cursor-pointer rounded-full">
-            <AvatarImage
-              src= {job?.company?.logo || "https://www.shutterstock.com/image-vector/circle-line-simple-design-logo-600nw-2174926871.jpg"}
-              alt="@shadcn"
-            />
-          </Avatar>
-        </Button>
+      <div className="flex items-center gap-4 mb2">
+        <Avatar className="cursor-pointer rounded-full shadow-md">
+          <AvatarImage
+            src={
+              job?.company?.logo ||
+              "https://www.shutterstock.com/image-vector/circle-line-simple-design-logo-600nw-2174926871.jpg"
+            }
+            alt={job?.company?.name || "Company Logo"}
+          />
+        </Avatar>
         <div>
-          <h1 className="font-medium text-lg">{job?.company?.name}</h1>
+          <h1 className="font-medium text-lg text-gray-800">{job?.company?.name}</h1>
           <p className="text-sm text-gray-500">{job?.location}</p>
         </div>
       </div>
-      <div>
-        <h1 className="font-bold text-lg">{job?.title}</h1>
+      <div className="mb-2">
+        <h1 className="font-bold text-xl text-gray-900 leading-tight mb-1">{job?.title}</h1>
         <p className="text-sm text-gray-800 leading-snug tracking-wide line-clamp-3">{job?.description}</p>
       </div>
       <div className="flex items-center justify-around mt-2">

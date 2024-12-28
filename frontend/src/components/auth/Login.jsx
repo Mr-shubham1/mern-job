@@ -56,7 +56,7 @@ const onSubmitHandler = async (e)=>{
 }
 
   return (
-    <div>
+    <div className="min-h-screen bg-gradient-to-br from-purple-100 via-white to-blue-100">
       <Navbar />
       <div className="flex items-center justify-center max-w-5xl mx-auto">
         <form

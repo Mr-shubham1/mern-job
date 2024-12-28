@@ -1,11 +1,12 @@
 import React from "react";
 import { Copyright, Facebook, Twitter, Linkedin } from "lucide-react";
+import { Link } from "react-router-dom";
 
 const Footer = () => {
   return (
     <div className="bg-[#51259b] text-gray-300 mt-8">
       <div className="max-w-6xl mx-auto px-6 py-10 grid grid-cols-1 md:grid-cols-3 gap-8">
-        {/* Branding Section */}
+        
         <div>
           <h1 className="text-2xl font-bold text-white">
             jobJunction <span className="text-[#F83002]">.com</span>
@@ -15,56 +16,44 @@ const Footer = () => {
             Discover your dream job or find the best talent effortlessly.
           </p>
         </div>
-
-        {/* Quick Links Section */}
         <div>
           <h2 className="text-lg font-semibold text-white">Quick Links</h2>
           <ul className="mt-4 space-y-2">
             <li>
-              <a href="/about" className="hover:text-white">
-                About Us
-              </a>
+              <Link className="hover:text-white" to={"/about"}>About Us</Link>
             </li>
             <li>
-              <a href="/jobs" className="hover:text-white">
-                Browse Jobs
-              </a>
+            <Link className="hover:text-white" to={"/browse"}>Browse Jobs</Link>
             </li>
             <li>
-              <a href="/contact" className="hover:text-white">
-                Contact Us
-              </a>
+            <Link className="hover:text-white" to={"/contact"}>Contact Us</Link>
             </li>
             <li>
-              <a href="/privacy" className="hover:text-white">
-                Privacy Policy
-              </a>
+            <Link className="hover:text-white" to={"/"}>Privacy policy</Link>
             </li>
           </ul>
         </div>
-
-        {/* Contact Section */}
         <div>
           <h2 className="text-lg font-semibold text-white">Contact Us</h2>
           <ul className="mt-4 space-y-2">
             <li>
-              Email:{" "}
-              <a href="mailto:support@jobportal.com" className="hover:text-[#F83002]">
-                support@jobportal.com
+              Email:
+              <a href="mailto:support.jobJunction@gmail.com" className="hover:text-[#F83002]">
+                support.jobJunction@gmail.com
               </a>
             </li>
             <li>
-              Phone:{" "}
-              <a href="tel:+1234567890" className="hover:text-[#F83002]">
-                +123-456-7890
+              Phone:
+              <a href="tel:+9336812575" className="hover:text-[#F83002]">
+                +9336812575
               </a>
             </li>
-            <li>Address: 123 Job Street, Tech City, TC 98765</li>
+            <li>Address: Bewada , Torawan , Dhanapur , chandauli , Varanasi U.P. , INDIA </li>
           </ul>
         </div>
       </div>
 
-      {/* Social Media & Copyright Section */}
+      
       <div className="border-t border-white py-6">
         <div className="max-w-6xl mx-auto px-6 flex flex-col md:flex-row items-center justify-between">
           <p className="text-sm text-white">

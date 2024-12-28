@@ -25,6 +25,7 @@ const Home = () => {
       <CategoryCarousel />
       <LatestJobs />
       <Footer />
+      
     </div>
   );
 };

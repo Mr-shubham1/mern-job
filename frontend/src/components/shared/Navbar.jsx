@@ -50,6 +50,8 @@ const Navbar = () => {
                 <Link to="/">Home</Link>
                 <Link to="/jobs">Jobs</Link>
                 <Link to="/browse">Browse</Link>
+                <Link to="/about">About Us</Link>
+                <Link to="/contact">Contact Us</Link>
               </>
             )}
           </ul>
@@ -88,7 +90,7 @@ const Navbar = () => {
                   </Avatar>
                   <div>
                     <h4 className="font-semibold">{user?.fullname}</h4>
-                    <p className="text-sm text-muted-foreground">{user?.profile?.bio}</p>
+                    <p className="text-sm text-muted-foreground line-clamp-3">{user?.profile?.bio}</p>
                   </div>
                 </div>
                 <div className="flex flex-col items-start mt-2">
