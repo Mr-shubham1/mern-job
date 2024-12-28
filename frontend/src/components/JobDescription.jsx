@@ -18,7 +18,7 @@ const JobDescription = () => {
   const dispatch = useDispatch();
 
 
-  const [isApplied, setIsApplied] = useState(singlejob?.job?.application.some((i)=>i.applicant._id===user._id));
+  const [isApplied, setIsApplied] = useState(singlejob?.job?.application.some((i)=>i.applicant?._id===user._id));
   useEffect(() => {
     const fetchsinglejob = async () => {
       try {
@@ -29,7 +29,7 @@ const JobDescription = () => {
           dispatch(setSinglejob(res.data));
           setIsApplied(
             res.data.job.application.some(
-              (application) => application.applicant._id === user?._id
+              (application) => application.applicant._id === user._id
             )
           );
         }
@@ -111,16 +111,6 @@ const JobDescription = () => {
           Description:{" "}
           <span className="pl-4 font-normal text-gray-800">
             {singlejob?.job?.description}
-          </span>
-        </h1>
-        <h1 className="font-bold my-1">
-          Requirements:{" "}
-          <span className="pl-4 font-normal text-gray-800">
-            { 
-              singlejob?.job?.requirements[0]?.split(",").length>0? singlejob?.job?.requirements[0]?.split(",").map((skill)=>{
-                return <Button  className="cursor-default px-3 h-5 mx-2 rounded-full bg-[#6A38C2]">{skill}</Button>
-              }) : <span className="text-sm font-semibold text-gray-700">Not specified by the organization</span>
-            } 
           </span>
         </h1>
         <h1 className="font-bold my-1">

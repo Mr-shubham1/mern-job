@@ -94,6 +94,7 @@ export const getJobById = async (req,res)=>{
                 }
               }
         );
+        
         if(!job){
             return res.status(404).json({
                 message:"job not found",
