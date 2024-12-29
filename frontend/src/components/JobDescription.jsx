@@ -12,7 +12,6 @@ import { toast } from "sonner";
 const JobDescription = () => {
   const params = useParams();
   const jobid = params.id;
-  // console.log(jobid);
   const user = useSelector((store) => store.auth.user || {});
   const { singlejob } = useSelector((store) => store.job);
   // console.log(singlejob.job);
@@ -65,66 +64,90 @@ const JobDescription = () => {
   };
 
   return (
-    <div className="max-w-4xl mx-auto my-10">
-      <div className="flex justify-between">
+    <div className="max-w-4xl mx-auto my-10 p-6 bg-white shadow-lg rounded-lg">
+      <div className="flex flex-col md:flex-row justify-between items-start md:items-center">
         <div>
-          <h1 className="font-bold text-xl">{singlejob?.job?.title}</h1>
-          <div className="flex items-center gap-2 mt-4">
-            <Badge className={"text-blue-700  "} variant={Ghost}>
+          <h1 className="font-extrabold text-2xl text-gray-900">
+            {singlejob?.job?.title}{" "}
+            <span className="font-semibold text-lg">@</span>{" "}
+            {singlejob?.job?.company?.name}
+          </h1>
+          <div className="flex items-center gap-4 mt-4 flex-wrap">
+            <Badge className="bg-blue-100 text-blue-700 font-semibold px-3 py-1 rounded-full">
               {singlejob?.job?.openings} Positions
             </Badge>
-            <Badge className={"text-[#F83002] "} variant={Ghost}>
+            <Badge className="bg-red-100 text-red-700 font-semibold px-3 py-1 rounded-full">
               {singlejob?.job?.jobtype}
             </Badge>
-            <Badge className={"text-[#7209b7] "} variant={Ghost}>
-              {singlejob?.job?.salary / 100000} LPA
+            <Badge className="bg-purple-100 text-purple-700 font-semibold px-3 py-1 rounded-full">
+              ₹{(singlejob?.job?.salary / 100000).toFixed(1)} LPA
             </Badge>
           </div>
         </div>
         <Button
           onClick={!isApplied ? applyJObHndler : undefined}
-          className={`rounded-lg ${
+          className={`mt-4 md:mt-0 rounded-lg text-white px-6 py-2 font-semibold ${
             isApplied
-              ? " bg-gray-600 cursor-not-allowed"
-              : "bg-[#7209b7] hover:bg-[#5f32ad]"
+              ? "bg-gray-400 cursor-not-allowed"
+              : "bg-purple-600 hover:bg-purple-700"
           }`}
         >
-          {isApplied ? "already applied" : "Apply now"}
+          {isApplied ? "Already Applied" : "Apply Now"}
         </Button>
       </div>
-      <h1 className="border-b-2 border-b-gray-300 font-medium py-4">
-        Job description
+      <div className="mt-4 ">
+        <div className="flex flex-col items-start mb-2 gap-4 sm:flex-row sm:items-center sm:gap-8">
+          <img className="h-[100px] w-[100px] object-cover rounded-full border-2 border-purple-600" src={singlejob?.job?.company?.logo} alt=""/>
+          <div>
+            <div className="text-lg font-bold text-gray-800">Company name:{" "} <span className="font-semibold text-gray-800">{singlejob?.job?.company?.name}</span> </div>
+            <div className="text-lg font-bold text-gray-800">Head Office:{" "} <span className="font-semibold text-gray-800">{singlejob?.job?.company?.location}</span> </div>
+            <div className="text-lg font-bold text-gray-800">
+              Official Website:{" "}
+              <a
+                target="blank"
+                className="text-blue-700"
+                href={singlejob?.job?.company?.website}
+              >
+                {singlejob?.job?.company?.website}
+              </a>{" "}
+            </div>
+          </div>
+        </div>
+        <div className="text-lg font-bold text-gray-800">About us:{" "} <span className="font-semibold text-gray-800 text-base">{singlejob?.job?.company?.description}</span> </div>
+      </div>
+      <h1 className="border-b-2 border-gray-300 font-bold text-lg py-4 ">
+        Job Description
       </h1>
-      <div className="my-4">
-        <h1 className="font-bold my-1">
-          Role:
-          <span className="pl-4 font-normal text-gray-800">
-            {singlejob?.job?.title}
-          </span>
+
+      <div className="my-4  text-gray-800 ">
+        <h1 className="font-bold text-lg flex flex-col sm:flex-row my-4">
+          <span className="sm:w-[20%] ">Role:</span>
+          <span className=" font-medium sm:w-[80%] ">{singlejob?.job?.title}</span>
         </h1>
-        <h1 className="font-bold my-1">
-          Location:
-          <span className="pl-4 font-normal text-gray-800">
-            {singlejob?.job?.location}
-          </span>
+        <h1 className="font-bold text-lg flex flex-col sm:flex-row my-4">
+          <span className="sm:w-[20%] ">Job Location:</span>
+          <span className="font-medium sm:w-[80%] ">{singlejob?.job?.location}</span>
         </h1>
-        <h1 className="font-bold my-1">
-          Description:
-          <span className="pl-4 font-normal text-gray-800">
+        <h1 className="font-bold text-lg flex flex-col sm:flex-row my-4">
+          <span className="sm:w-[20%] ">Description:</span>
+          <span className="font-medium sm:w-[80%]  text-base">
             {singlejob?.job?.description}
           </span>
         </h1>
-        <h1 className="font-bold my-1">
-          Requirements:
-          <span className="pl-4 font-normal text-gray-800">
+        <h1 className="font-bold text-lg flex flex-col sm:flex-row my-4">
+          <span className="sm:w-[20%] ">Requirements:</span>
+          <span className=" flex flex-wrap gap-4 font-medium sm:w-[80%]  text-base">
             {singlejob?.job?.requirements[0]?.split(",").length > 0 ? (
-              singlejob?.job?.requirements[0]?.split(",").map((skill) => {
-                return (
-                  <Button className="cursor-default px-3 h-5 mx-2 rounded-full bg-[#6A38C2]">
+              singlejob?.job?.requirements[0]
+                ?.split(",")
+                .map((skill, index) => (
+                  <Button
+                    key={index}
+                    className="cursor-default px-3 py-1 h-auto rounded-full bg-purple-600 text-white text-sm"
+                  >
                     {skill}
                   </Button>
-                );
-              })
+                ))
             ) : (
               <span className="text-sm font-semibold text-gray-700">
                 Not specified by the organization
@@ -132,31 +155,30 @@ const JobDescription = () => {
             )}
           </span>
         </h1>
-        <h1 className="font-bold my-1">
-          Experience:
-          <span className="pl-4 font-normal text-gray-800">
+        <h1 className="font-bold text-lg flex flex-col sm:flex-row my-4">
+          <span className="sm:w-[20%] ">Experience:</span>
+          <span className="font-medium sm:w-[80%] ">
             {singlejob?.job?.experience} Years
           </span>
         </h1>
-        <h1 className="font-bold my-1">
-          Salary:
-          <span className="pl-4 font-normal text-gray-800">
-            {singlejob?.job?.salary / 100000} LPA
-          </span>
+        <h1 className="font-bold text-lg flex flex-col sm:flex-row my-4">
+          <span className="sm:w-[20%] ">Salary:</span>
+          <span className="font-medium sm:w-[80%] ">{singlejob?.job?.salary} LPA</span>
         </h1>
-        <h1 className="font-bold my-1">
-          Total Applicants:
-          <span className="pl-4 font-normal text-gray-800">
+        <h1 className="font-bold text-lg flex flex-col sm:flex-row my-4">
+          <span className="sm:w-[20%] ">Total Applicants:</span>
+          <span className="font-medium sm:w-[80%] ">
             {singlejob?.job?.application?.length}
           </span>
         </h1>
-        <h1 className="font-bold my-1">
-          Posted Date:
-          <span className="pl-4 font-normal text-gray-800">
+        <h1 className="font-bold text-lg flex flex-col sm:flex-row my-4">
+          <span className="sm:w-[20%] ">Posted Date:</span>
+          <span className="font-medium sm:w-[80%] ">
             {singlejob?.job?.createdAt?.split("T")[0]}
           </span>
         </h1>
       </div>
+      
     </div>
   );
 };
