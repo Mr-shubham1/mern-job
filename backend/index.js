@@ -16,7 +16,9 @@ app.use(express.json());
 app.use(express.urlencoded({extended:true}));
 app.use(cookieParser());
 const corsOptions = {
-    origin:"http://localhost:5173",      // localhost of frontend    (port no. of vite react :- 5173)   , it means we will use vite react for front end
+    origin:[
+    "http://localhost:5173",                   // localhost of frontend    (port no. of vite react :- 5173)   , it means we will use vite react for front end
+    "https://mern-job-frontend-gj8r.onrender.com"],  // deployed frontend
     credentials: true,
 }
 app.use(cors(corsOptions));
