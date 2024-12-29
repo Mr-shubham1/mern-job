@@ -8,6 +8,8 @@ import { APPLICATIO_END_POINT, JOB_END_POINT } from "@/utils/constant";
 import { useDispatch, useSelector } from "react-redux";
 import { setSinglejob } from "@/redux/jobslice";
 import { toast } from "sonner";
+import Navbar from "./shared/Navbar";
+import Footer from "./Footer";
 
 const JobDescription = () => {
   const params = useParams();
@@ -64,6 +66,8 @@ const JobDescription = () => {
   };
 
   return (
+    <>
+    <Navbar/>
     <div className="max-w-4xl mx-auto my-10 p-6 bg-white shadow-lg rounded-lg">
       <div className="flex flex-col md:flex-row justify-between items-start md:items-center">
         <div>
@@ -180,6 +184,9 @@ const JobDescription = () => {
       </div>
       
     </div>
+    <Footer/>
+    </>
+    
   );
 };
 

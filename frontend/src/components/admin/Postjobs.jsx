@@ -125,7 +125,7 @@ const Postjobs = () => {
                 type="text"
                 name="salary"
                 value={input.salary}
-                placeholder="*numeric only in INR/Year"
+                placeholder="*numeric only in L.P.A (INR)"
                 onChange={changeEventHandler}
                 className=" focus-visible:ring-0 focus-visible:ring-offset-0"
               />
