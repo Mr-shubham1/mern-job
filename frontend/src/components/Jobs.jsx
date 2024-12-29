@@ -12,7 +12,7 @@ const Jobs = () => {
   return (
     <div>
       <Navbar/>
-      <div className='flex flex-col  md:flex-row gap-8 max-w-5xl mx-auto mt-5 px-4'>
+      <div className='flex flex-col  md:flex-row gap-8 max-w-6xl mx-auto mt-5 px-4'>
         <div className='w-full md:w-[20%]'>
           <CardFilter/>
         </div>
