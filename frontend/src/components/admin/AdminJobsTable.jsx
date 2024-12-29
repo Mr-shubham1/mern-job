@@ -19,6 +19,7 @@ const AdminJobsTable = () => {
   useGetAllAdminjobs();
   const allAdminjobs = useSelector((store) => store.job.allAdminjobs);
   const [filteredjobs, setFilteredjobs] = useState(allAdminjobs);
+  
   const searchtext = useSelector((store) => store.job.searchJobBytext);
   // console.log(searchtext);
   const navigate = useNavigate();
@@ -37,15 +38,16 @@ const AdminJobsTable = () => {
     setFilteredjobs(tempjobs);
   }, [allAdminjobs, searchtext]);
   return (
-    <div className="max-w-3xl mx-auto">
-      <Table>
-        <TableCaption>A list of your recent posted jobs</TableCaption>
+    <div className="max-w-3xl  mx-auto
+        px-4 sm:px-6 lg:px-8 py-6 ">
+      <Table className=" border shadow-2xl rounded-lg  overflow-x-auto">
+        <TableCaption className="caption-top text-lg font-semibold mb-4">A list of your recent posted jobs <br /> <span className="text-red-800 font-semibold text-xs">* to post a job first Register a Company , if Not Registered yet.</span> </TableCaption>
         <TableHeader>
-          <TableRow>
-            <TableCell>Company name</TableCell>
-            <TableCell>Role</TableCell>
-            <TableCell>Date</TableCell>
-            <TableCell className="text-right">Action</TableCell>
+          <TableRow className="border-b border-gray-300">
+            <TableCell className="text-sm font-medium text-gray-700">Company name</TableCell>
+            <TableCell className="text-sm font-medium text-gray-700">Role</TableCell>
+            <TableCell className="hidden sm:flex text-sm font-medium text-gray-700">Date</TableCell>
+            <TableCell className="text-right text-sm font-medium text-gray-700">Action</TableCell>
           </TableRow>
         </TableHeader>
         <TableBody>
@@ -57,18 +59,16 @@ const AdminJobsTable = () => {
                 <TableRow>
                   <TableCell>{job?.company?.name}</TableCell>
                   <TableCell>{job?.title}</TableCell>
-                  <TableCell>{job?.createdAt?.split("T")[0]}</TableCell>
+                  <TableCell className="hidden sm:flex">{job?.createdAt?.split("T")[0]}</TableCell>
                   <TableCell className="text-right">
-                    <Popover>
+                    <Popover >
                       <PopoverTrigger>
-                        <MoreHorizontal />
+                        <MoreHorizontal   />
                       </PopoverTrigger>
                       <PopoverContent className="w-fit px-3 py-2">
                         <div
-                          onClick={() =>
-                            navigate(`/admin/company/create/${job._id}`)  // i have to fix it
-                          }
-                          className="flex items-center gap-x-2 cursor-pointer"
+                          
+                          className="flex items-center gap-x-2 hover:text-gray-500 cursor-default"
                         >
                           <ClipboardX className="h-4"/>
                           <span>Delete</span>
@@ -77,7 +77,7 @@ const AdminJobsTable = () => {
                           onClick={() =>
                             navigate(`/admin/jobs/${job._id}/applicants`)
                           }
-                          className="flex items-center gap-x-2 cursor-pointer mt-2"
+                          className="flex items-center gap-x-2 cursor-pointer mt-2 hover:text-purple-900 transform transition-all hover:font-medium "
                         >
                           <Eye className="h-4" />
                           <span>Applicants</span>

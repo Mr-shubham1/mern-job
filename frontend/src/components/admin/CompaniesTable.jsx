@@ -32,15 +32,16 @@ const CompaniesTable = () => {
     setFilteredCompanies(tempcompanies);
   },[companies,searchtext])
   return (
-    <div className="max-w-3xl mx-auto">
-      <Table>
-        <TableCaption>A list of your recent registered companies</TableCaption>
+    <div className="max-w-3xl  mx-auto
+        px-4 sm:px-6 lg:px-8 py-6 ">
+      <Table className=" border shadow-2xl rounded-lg  overflow-x-auto">
+        <TableCaption className="caption-top text-lg font-semibold mb-4">A list of your recent registered companies</TableCaption>
         <TableHeader>
-          <TableRow>
-            <TableCell>Logo</TableCell>
-            <TableCell>Name</TableCell>
-            <TableCell>Date</TableCell>
-            <TableCell className="text-right">Action</TableCell>
+          <TableRow className="border-b border-gray-300">
+            <TableCell className="text-sm font-medium text-gray-700">Logo</TableCell>
+            <TableCell className="text-sm font-medium text-gray-700">Name</TableCell>
+            <TableCell className="text-sm font-medium text-gray-700 hidden sm:flex">Date</TableCell>
+            <TableCell className="text-right text-sm font-medium text-gray-700">Action</TableCell>
           </TableRow>
         </TableHeader>
         <TableBody>
@@ -61,7 +62,7 @@ const CompaniesTable = () => {
                     </Avatar>
                   </TableCell>
                   <TableCell>{company?.name}</TableCell>
-                  <TableCell>{company?.createdAt.split("T")[0]}</TableCell>
+                  <TableCell className="hidden sm:flex">{company?.createdAt.split("T")[0]}</TableCell>
                   <TableCell className="text-right">
                     <Popover>
                       <PopoverTrigger>
