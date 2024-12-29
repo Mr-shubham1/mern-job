@@ -111,55 +111,55 @@ const CreateCompanybyId = () => {
             <h1 className="text-xl font-bold">Company Setup</h1>
           </div>
 
-          <div className="mb-4 grid grid-cols-5 items-center">
-            <Label className="col-span-2">Company name</Label>
+          <div className="mb-4 grid sm:grid-cols-5 items-center">
+            <Label className="sm:col-span-2">Company name</Label>
             <Input
-              className="mt-2 border-2 border-gray-500 col-span-3"
+              className="mt-2 border-2 border-gray-500 sm:col-span-3"
               type="text"
               name="name"
               onChange={onChangeEventHandler}
               value={input.name}
             />
           </div>
-          <div className="mb-4 grid grid-cols-5">
-            <Label className="col-span-2 mt-4">Description</Label>
+          <div className="mb-4 grid sm:grid-cols-5">
+            <Label className="sm:col-span-2 mt-4">Description</Label>
             <textarea
-              className="mt-2 border-2 border-gray-500 col-span-3 h-20"
+              className="mt-2 border-2 border-gray-500 sm:col-span-3 h-20"
               name="description"
               onChange={onChangeEventHandler}
               value={input.description}
             />
           </div>
-          <div className="mb-4 grid grid-cols-5 items-center">
+          <div className="mb-4 grid sm:grid-cols-5 items-center">
             <Label className="col-span-2 ">Website</Label>
             <Input
-              className="mt-2 border-2 border-gray-500 col-span-3"
+              className="mt-2 border-2 border-gray-500 sm:col-span-3"
               type="text"
               name="website"
               onChange={onChangeEventHandler}
               value={input.website}
             />
           </div>
-          <div className="mb-4 grid grid-cols-5 items-center">
-            <Label className="col-span-2 ">Location</Label>
+          <div className="mb-4 grid sm:grid-cols-5 items-center">
+            <Label className="sm:col-span-2 ">Location</Label>
             <Input
-              className="mt-2 border-2 border-gray-500 col-span-3"
+              className="mt-2 border-2 border-gray-500 sm:col-span-3"
               type="text"
               name="location"
               onChange={onChangeEventHandler}
               value={input.location}
             />
           </div>
-          <div className="mb-4 grid grid-cols-5 items-center">
-            <Label className="col-span-2 ">Logo</Label>
+          <div className="mb-4 grid sm:grid-cols-5 items-center">
+            <Label className="sm:col-span-2 ">Logo</Label>
             <Input
-              className="mt-2 border-2 border-gray-500 col-span-3 cursor-pointer"
+              className="mt-2 border-2 border-gray-500 sm:col-span-3 cursor-pointer"
               type="file"
               accept="image/*"
               onChange={fileChangeHandler}
             />
           </div>
-          <Button type="submit" className="w-full mx-auto mt-4">
+          <Button type="submit" className="w-full mx-auto mt-4 bg-purple-800 hover:bg-purple-900">
             {!loading ? "Update" : <Loader2 className="animate-spin" />}
           </Button>
         </form>
