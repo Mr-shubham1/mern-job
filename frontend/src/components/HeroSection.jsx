@@ -31,17 +31,17 @@ const HeroSection = () => {
           <br /> With personalized recommendations and expert guidance, landing
           your dream job is just a click away!
         </p>
-        <div className="flex flex-col sm:flex-row w-full sm:w-[70%] lg:w-[40%] border border-gray-200 pl-3 rounded-full items-center gap-4 mx-auto shadow-lg">
+        <div className="flex  w-fit  border border-gray-200 pl-3 rounded-full items-center gap-4 mx-auto shadow-lg ">
           <input
             type="text"
             value={searchedQuerrytext}
             onChange={changeEventHandler}
             placeholder="Find Your Dream Jobs"
-            className="border-none outline-none w-full text-sm sm:text-base"
+            className=" border-none outline-none w-full text-sm sm:text-base"
           />
           <Button
             onClick={browseHandler}
-            className=" sm:rounded-r-full  bg-[#6A38C2] w-1/2 sm:w-auto"
+            className=" rounded-r-full  bg-[#6A38C2]  "
           >
             <Search className="h-5 w-5" />
           </Button>

@@ -1,5 +1,5 @@
 import React from "react";
-import { Copyright, Facebook, Twitter, Linkedin } from "lucide-react";
+import { Copyright, Facebook, Twitter, Linkedin, Youtube, Github } from "lucide-react";
 import { Link } from "react-router-dom";
 
 const Footer = () => {
@@ -63,14 +63,14 @@ const Footer = () => {
             2024 jobJunction.com All rights reserved.
           </p>
           <div className="flex gap-4 mt-4 md:mt-0">
-            <a href="#" className="text-white hover:text-[#F83002]">
-              <Facebook className="h-6 w-6" />
-            </a>
-            <a href="#" className="text-white hover:text-[#F83002]">
-              <Twitter className="h-6 w-6" />
-            </a>
-            <a href="#" className="text-white hover:text-[#F83002]">
+            <a target="blank" href="https://www.linkedin.com/in/shubham-gupta-6210b722a/" className="text-white hover:text-[#F83002]">
               <Linkedin className="h-6 w-6" />
+            </a>
+            <a target="blank" href="https://github.com/Mr-shubham1" className="text-white hover:text-[#F83002]">
+              <Github className="h-6 w-6" />
+            </a>
+            <a target="blank" href="https://www.youtube.com/@saurabh_vg2" className="text-white hover:text-[#F83002]">
+              <Youtube className="h-6 w-6" />
             </a>
           </div>
         </div>
