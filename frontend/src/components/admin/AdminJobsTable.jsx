@@ -52,7 +52,7 @@ const AdminJobsTable = () => {
         </TableHeader>
         <TableBody>
           {allAdminjobs.length <= 0 ? (
-            <span>You haven't registerd any Company yet.</span>
+            <span className="text-red-700 text-sm font-semibold" >*You posted any Company yet.</span>
           ) : (
             filteredjobs.map((job) => {
               return (
