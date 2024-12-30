@@ -31,8 +31,8 @@ const Navbar = () => {
 
   return (
     <div className="bg-white border-b shadow-md">
-      <div className="flex flex-wrap items-center justify-between max-w-screen-lg mx-auto h-16 px-4">
-        {/* Logo */}
+      <div className="flex flex-wrap items-center justify-between max-w-screen-xl mx-auto h-16 px-4">
+        
         <h1 className="text-2xl font-bold text-[#6A38C2]">
           jobJunction <span className="text-[#F83802]">.com</span>
         </h1>
