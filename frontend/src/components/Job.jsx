@@ -57,7 +57,7 @@ const Job = ({job}) => {
       <div className="flex items-center justify-around mt-2">
         <span className={"text-blue-700 text-sm font-semibold "}>{job?.openings} positions</span>
         <Badge className={"text-[#F83002]"} variant={Ghost} >{job?.jobtype}</Badge>
-        <Badge className={"text-[#7209b7] "} variant={Ghost} >{job?.salary/100000} LPA</Badge>
+        <Badge className={"text-[#7209b7] "} variant={Ghost} >{job?.salary} LPA</Badge>
       </div>
       <div className="flex items-center justify-between px-2 mt-4">
         <Button className="h-7 w-fit px-3" onClick={(e)=>navigate(`/description/${job?._id}`)} variant="outline">Details </Button>
