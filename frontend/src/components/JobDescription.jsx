@@ -84,7 +84,7 @@ const JobDescription = () => {
               {singlejob?.job?.jobtype}
             </Badge>
             <Badge className="bg-purple-100 text-purple-700 font-semibold px-3 py-1 rounded-full">
-              ₹{(singlejob?.job?.salary / 100000).toFixed(1)} LPA
+              ₹{(singlejob?.job?.salary).toFixed(1)} LPA
             </Badge>
           </div>
         </div>
